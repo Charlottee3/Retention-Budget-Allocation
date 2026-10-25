@@ -1,6 +1,6 @@
 # Telco Customer Retention: Financial-First Churn Optimization
 
-## 🎯 Executive Summary & Key Results
+## Executive Summary & Key Results
 
 **Business Question:**  
 How can Telco maximize net retention profits from a customer base while accounting for retention offer costs (€50), expected campaign acceptance rates (30%), and lost residual customer lifetime value (€500)?
@@ -16,7 +16,7 @@ Deploying a regularized $L_2$ Logistic Regression pipeline at an **optimized dec
 
 ---
 
-## 📊 Core Visualizations
+## Core Visualizations
 
 | Figure 1: Financial Threshold Optimization | Figure 2: Key Risk Drivers (Odds Ratios) |
 | :---: | :---: |
@@ -25,7 +25,7 @@ Deploying a regularized $L_2$ Logistic Regression pipeline at an **optimized dec
 
 ---
 
-## 💶 Cost Matrix & Financial Framework
+## Cost Matrix & Financial Framework
 
 Misclassifications carry drastically different financial impacts in each direction:
 
@@ -46,7 +46,7 @@ $$\text{Net Incremental Value} = (\text{TP} \times €100) - (\text{FP} \times �
 
 ---
 
-## 💡 Key Business Risk Drivers
+## Key Business Risk Drivers
 
 1. **Fiber Optic Friction:** Fiber Optic subscribers exhibit **$>10\times$ higher churn odds** ($\text{OR} = 10.51$) than DSL users, highlighting price sensitivity and potential service friction in high-ARPU tiers.
 2. **Contract Protection:** Two-year contracts reduce churn odds by **74.6%** ($\text{OR} = 0.254$), making long-term contract incentives the strongest retention lever.
@@ -54,7 +54,7 @@ $$\text{Net Incremental Value} = (\text{TP} \times €100) - (\text{FP} \times �
 
 ---
 
-## 🛡️ Data Hygiene & Leakage Prevention
+## Data Hygiene & Leakage Prevention
 
 - **Unit of Analysis:** Individual customer identified by `customerID` (target: `Churn` $\in \{0, 1\}$).
 - **Early Partitioning:** A holdout test set (20% of dataset, 1,409 accounts) was isolated immediately in Module 1 (`train_test_split`, `random_state=42`).
@@ -62,7 +62,7 @@ $$\text{Net Incremental Value} = (\text{TP} \times €100) - (\text{FP} \times �
 
 ---
 
-## ⚠️ Limitations & Methodological Honesties
+## Limitations & Methodological Honesties
 
 - **Risk vs. Incrementality (Uplift Gap):** Our model predicts *churn probability* $P(\text{Churn})$, not *treatment uplift*. We assume a uniform 30% acceptance rate across all risk levels. In practice, an Uplift Model is required to isolate "Incremental Responders" from "Do Not Disturbs."
 - **Multicollinearity:** `TotalCharges` exhibits strong collinearity with `tenure` ($r = 0.83$, $\text{VIF} = 9.70$). Regularized $L_2$ regression stabilizes numerical estimates, but `tenure` remains the cleaner driver for executive reporting.
@@ -70,7 +70,7 @@ $$\text{Net Incremental Value} = (\text{TP} \times €100) - (\text{FP} \times �
 
 ---
 
-## 🛠️ Repository Structure & Quickstart
+## Repository Structure & Quickstart
 
 ```text
 ├── data/
